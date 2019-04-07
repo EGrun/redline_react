@@ -65,11 +65,11 @@ export default class DropZone extends Component {
 
   getFileList = (searchTerm) => {
     var query = "";
-    searchTerm = "--placeholder3--";
     
     if (searchTerm && searchTerm.length > 0) {
       searchTerm = this.escapeString(searchTerm);
-      query = "SELECT * FROM dcterms:qualifiedResource WHERE dc:description='" + searchTerm + "'" +
+      query = "SELECT * FROM dcterms:qualifiedResource WHERE dc:title='" + searchTerm + "'" + 
+      " OR dc:description='" + searchTerm + "'" +
       " OR dc:publisher='" + searchTerm + "'" +
       " OR dc:contributor='" + searchTerm + "'";
     }
@@ -110,6 +110,12 @@ export default class DropZone extends Component {
         }) : [];
         this.setState({files : this.state.files, uploadedFiles : files});
       });
+  }
+
+  handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.getFileList(e.target.value);
+    }
   }
 
   readFiles = async (files) => {
@@ -227,6 +233,7 @@ export default class DropZone extends Component {
           )}
         </Dropzone>
       </div>
+      <div className="searchField-container"><input type="text" onKeyPress={this.handleSearchKeyPress} /></div>
       <div className="filelist-container">
         <FilesList files={this.state.uploadedFiles}/>
       </div>
