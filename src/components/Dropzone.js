@@ -30,10 +30,11 @@ export default class DropZone extends Component {
 
     const convertFiles = async (json) => { 
       const analysisHandler = async (csv) => {
+        // handle logic to pass files to backend
         console.log('analysisH')
         const res = await Axios.post('', csv)
         console.log(res)
-        // handle logic to pass files to backend
+
       }
       console.log("im the file you're looking for:")
       let documents = JSON.parse(json)
@@ -59,7 +60,6 @@ export default class DropZone extends Component {
 
     return (
       <div className="dropzone-container">
-        {console.log(this.state.files)}
         <Dropzone onDrop={this.onDrop}>
           {({getRootProps, getInputProps}) => (
             <section className="container">
