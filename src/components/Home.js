@@ -1,6 +1,7 @@
 import React from "react"
 import DropZone from "./Dropzone"
 import SideBar from "./SideBar";
+import AdminBar from './AdminBar';
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
   return (
     <div style={homeContainer}>
       <SideBar />
+      <AdminBar />
       <DropZone />
     </div>
   );
