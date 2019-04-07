@@ -1,13 +1,21 @@
-import React, { Component } from "react"
+import React from "react"
 import DropZone from "./Dropzone"
+import SideBar from "./SideBar";
 
-class Home extends Component {
-  state = {  }
-  render() { 
-    return ( 
-      <DropZone />
-    );
+const Home = () => {
+
+  const homeContainer = {
+    display: 'flex',
+    flexFlow: 'wrap',
   }
+
+
+  return (
+    <div style={homeContainer}>
+      <SideBar />
+      <DropZone />
+    </div>
+  );
 }
  
 export default Home;
