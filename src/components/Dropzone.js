@@ -3,6 +3,7 @@ import "./dropzone.css";
 import Dropzone from 'react-dropzone';
 import FilesList from './FilesList';
 import Axios from 'axios';
+import * as moment from 'moment';
 const converter = require('json-2-csv');
 
 export default class DropZone extends Component {
@@ -13,26 +14,6 @@ export default class DropZone extends Component {
   constructor() {
     super();
     var uploadedFiles = [
-      {
-        "FileId":"1",
-        "EmployeeName": "1",
-        "Topic": "1",
-        "Keyword1": "1",
-        "Keyword2": "1",
-        "Keyword3": "1",
-        "Date": "1",
-        "Time": "1",
-      },
-      {
-        "FileId":"2",
-        "EmployeeName": "2",
-        "Topic": "2",
-        "Keyword1": "2",
-        "Keyword2": "2",
-        "Keyword3": "2",
-        "Date": "2",
-        "Time": "2",
-      },
     ];
 
     this.state = {
@@ -84,11 +65,13 @@ export default class DropZone extends Component {
 
   getFileList = (searchTerm) => {
     var query = "";
+    searchTerm = "--placeholder3--";
+    
     if (searchTerm && searchTerm.length > 0) {
       searchTerm = this.escapeString(searchTerm);
-      query = 'SELECT * FROM dcterms:qualifiedResource WHERE dcterms:description="' + searchTerm + '"' +
-      'OR dc:publisher="' + searchTerm + '"' +
-      'OR dc:contributor="' + searchTerm + '"';
+      query = "SELECT * FROM dcterms:qualifiedResource WHERE dc:description='" + searchTerm + "'" +
+      " OR dc:publisher='" + searchTerm + "'" +
+      " OR dc:contributor='" + searchTerm + "'";
     }
     else{
       query = 'SELECT * FROM dcterms:qualifiedResource';
@@ -113,7 +96,7 @@ export default class DropZone extends Component {
       .then(this.handleResponse).then(data => {
         console.log("search results:", data);
 
-        var files = data.objects.map(f => {
+        var files = data.objects ? data.objects.map(f => {
           return {
             "FileId":f.properties["enaio:objectId"].value,
             "EmployeeName": "Richard Heins",
@@ -121,10 +104,10 @@ export default class DropZone extends Component {
             "Keyword1": f.properties["dc:description"] ? f.properties["dc:description"].value : "",
             "Keyword2": f.properties["dc:publisher"] ? f.properties["dc:publisher"].value : "",
             "Keyword3": f.properties["dc:contributor"] ? f.properties["dc:contributor"].value : "",
-            "Date": f.properties["enaio:creationDate"] ? f.properties["enaio:creationDate"].value : "",
-            "Time": f.properties["enaio:creationDate"] ? f.properties["enaio:creationDate"].value : "",
+            "Date": f.properties["enaio:creationDate"] ? moment(f.properties["enaio:creationDate"].value).format("ll") : "",
+            "Time": f.properties["enaio:creationDate"] ? moment(f.properties["enaio:creationDate"].value).format("LTS") : "",
           }
-        });
+        }) : [];
         this.setState({files : this.state.files, uploadedFiles : files});
       });
   }
@@ -145,7 +128,7 @@ export default class DropZone extends Component {
         // handle logic to pass files to backend
     
         console.log(csv)
-        const res = await Axios.post('doc/upload', csv, {headers: {
+        const res = await Axios.post('doc/nlptest', csv, {headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
