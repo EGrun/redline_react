@@ -209,14 +209,7 @@ export default class DropZone extends Component {
   }
 
   render() {
-    const files = this.state.files.map(file => (
-      <li key={file.name}>
-        {file.name} - {file.size} bytes
-      </li>
-    ));
-
     return (
-      <div>
       <div className="dropzone-container">
         <Dropzone onDrop={this.onDrop}>
           {({getRootProps, getInputProps}) => (
@@ -228,22 +221,17 @@ export default class DropZone extends Component {
                 <p className='or-txt'>or</p>
                 <p className='file-select-btn'>Select Files</p>
               </div>
-              <aside>
-                <h4>Files</h4>
-                <ul>{files}</ul>
-              </aside>
             </section>
           )}
         </Dropzone>
+        <div>
+          <input className="search-field-container" placeholder='Search' type="text" onKeyPress={this.handleSearchKeyPress} />
+          <label className='file-select-btn'>Search</label>
+        </div>
+          <br/>
         <div className="filelist-container">
           <FilesList files={this.state.uploadedFiles}/>
         </div>
-      </div>
-      <div className="searchField-container"><input type="text" onKeyPress={this.handleSearchKeyPress} /><label>Search</label></div>
-      <br/>
-      <div className="filelist-container">
-        <FilesList files={this.state.uploadedFiles}/>
-      </div>
       </div>
     )
   }

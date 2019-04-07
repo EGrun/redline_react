@@ -2,5 +2,12 @@
   display: flex;
   flex-flow: wrap;
   height: 60vh;
-  overflow:auto;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .files-container {
+    height: fit-content;
+    overflow: inherit;
+  }
 }

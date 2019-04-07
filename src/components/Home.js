@@ -1,25 +1,15 @@
 import React from "react"
+import './home.css'
 import DropZone from "./Dropzone"
 import SideBar from "./SideBar";
 import AdminBar from './AdminBar';
 
 const Home = () => {
 
-  const homeContainer = {
-    display: 'flex',
-    flexFlow: 'wrap',
-    height: '100vh',
-  }
-
-  const content = {
-    display: 'flex',
-    justifyContent: 'flex-start',
-  }
-
   return (
-    <div style={homeContainer}>
+    <div className='home-container'>
       <AdminBar />
-      <div style={content}>
+      <div className='content'>
         <SideBar />
         <DropZone />
       </div>
