@@ -80,7 +80,7 @@
 @media only screen and (max-width: 500px) {
   .sidebar-container {
     flex-wrap: wrap;
-    margin: 0px auto;
+    margin: 0px;
     justify-content: center;
     min-width: 100vw;
     max-height: fit-content;
