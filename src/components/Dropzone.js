@@ -209,12 +209,6 @@ export default class DropZone extends Component {
   }
 
   render() {
-    const files = this.state.files.map(file => (
-      <li key={file.name}>
-        {file.name} - {file.size} bytes
-      </li>
-    ));
-
     return (
       <div className="dropzone-container">
         <Dropzone onDrop={this.onDrop}>
@@ -227,10 +221,6 @@ export default class DropZone extends Component {
                 <p className='or-txt'>or</p>
                 <p className='file-select-btn'>Select Files</p>
               </div>
-              <aside>
-                <h4>Files</h4>
-                <ul>{files}</ul>
-              </aside>
             </section>
           )}
         </Dropzone>
