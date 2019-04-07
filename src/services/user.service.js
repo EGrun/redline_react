@@ -1,10 +1,8 @@
-import config from 'config';
 import { authHeader } from '../helpers/auth-header';
 
 export const userService = {
     login,
-    logout,
-    getAll
+    logout
 };
 
 function login(username, password, tenantId) {
@@ -39,15 +37,6 @@ function login(username, password, tenantId) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('user');
-}
-
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
