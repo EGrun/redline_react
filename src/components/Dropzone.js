@@ -12,6 +12,11 @@ export default class DropZone extends Component {
     };
   }
 
+  componentDidMount  = async ()=>{
+      const response = await Axios.get('doc/upload')
+      console.log(response.data)
+  }
+
   onDrop = async (files) => {
     this.setState({ files })
     await this.readFiles(this.state.files)
@@ -29,21 +34,24 @@ export default class DropZone extends Component {
     await reader.readAsText(file)
 
     const convertFiles = async (json) => { 
-      const analysisHandler = async (csv) => {
+        const analysisHandler = async (csv) => {
         // handle logic to pass files to backend
-        console.log('analysisH')
-        const res = await Axios.post('', csv)
+    
+        console.log(csv)
+        const res = await Axios.post('doc/upload', csv, {headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
         console.log(res)
 
       }
-      console.log("im the file you're looking for:")
       let documents = JSON.parse(json)
-      console.log(documents)
+    //   console.log(documents)
   
       const json2csvCallback = function (err, csv) {
         if (err) throw err;
-        console.log('callback')
-        console.log(csv)
+        // console.log('callback')
+        // console.log(csv)
         analysisHandler( csv );
       };
   
