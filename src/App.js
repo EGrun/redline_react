@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import Login from './components/Login';
 import Home from "./components/Home"
-import AdminBar from './components/AdminBar';
-import SideBar from './components/SideBar';
 
 class App extends Component {
   render() {

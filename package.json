@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "json-2-csv": "^3.5.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.3",
