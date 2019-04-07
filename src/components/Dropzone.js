@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./dropzone.css";
 import Dropzone from 'react-dropzone';
+import Axios from 'axios';
 const converter = require('json-2-csv');
 
 export default class DropZone extends Component {
@@ -13,8 +14,7 @@ export default class DropZone extends Component {
 
   onDrop = async (files) => {
     this.setState({ files })
-    const convertedFiles = await this.readFiles(this.state.files)
-    await this.analysisHandler(convertedFiles)
+    await this.readFiles(this.state.files)
   };
 
   readFiles = async (files) => {
@@ -29,6 +29,13 @@ export default class DropZone extends Component {
     await reader.readAsText(file)
 
     const convertFiles = async (json) => { 
+      const analysisHandler = async (csv) => {
+        // handle logic to pass files to backend
+        console.log('analysisH')
+        const res = await Axios.post('', csv)
+        console.log(res)
+
+      }
       console.log("im the file you're looking for:")
       let documents = JSON.parse(json)
       console.log(documents)
@@ -36,16 +43,12 @@ export default class DropZone extends Component {
       const json2csvCallback = function (err, csv) {
         if (err) throw err;
         console.log('callback')
-        console.log(csv);
+        console.log(csv)
+        analysisHandler( csv );
       };
   
-      let result = await converter.json2csv( documents , json2csvCallback, {expandArrayObjects: true})
-      return result
+      await converter.json2csv( documents , json2csvCallback, {expandArrayObjects: true})
     }
-  }
-
-  analysisHandler = (files) => {
-    // handle logic to pass files to backend
   }
 
   render() {
@@ -57,7 +60,6 @@ export default class DropZone extends Component {
 
     return (
       <div className="dropzone-container">
-        {console.log(this.state.files)}
         <Dropzone onDrop={this.onDrop}>
           {({getRootProps, getInputProps}) => (
             <section className="container">
