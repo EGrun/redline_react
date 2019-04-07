@@ -1,13 +1,13 @@
 .dropzone-container {
   margin: 1em;
   height: 92vh;
-  max-width: 80vw;
-  min-width: 30vw;
+  width: inherit;
   border-radius: 3px;
   box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.3);
   background-color: #fcfcfc;
-  overflow: hidden,
+  overflow: hidden;
 }
+
 .fileslist-container{
   overflow: hidden;
 }
@@ -60,6 +60,13 @@ td {
 
 }
 
+.search-field-container {
+  border: .1em solid #abb0b6;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 0 rgba(204, 204, 204, 0.5);
+  margin: 0 .25em;
+}
+
 .file-select-btn {
   align-self: center;
   width: fit-content;
@@ -69,4 +76,15 @@ td {
   margin: .5em;
   box-shadow: 0 1px 0 0 rgba(204, 204, 204, 0.5);
   background-color: #ffa943;
+}
+
+@media only screen and (max-width: 500px) {
+  .dropzone-container {
+    height: fit-content;
+    overflow: inherit;
+  }
+
+  .fileslist-container{
+    overflow: inherit;
+  }
 }

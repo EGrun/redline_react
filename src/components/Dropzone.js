@@ -216,7 +216,6 @@ export default class DropZone extends Component {
     ));
 
     return (
-      <div>
       <div className="dropzone-container">
         <Dropzone onDrop={this.onDrop}>
           {({getRootProps, getInputProps}) => (
@@ -235,15 +234,14 @@ export default class DropZone extends Component {
             </section>
           )}
         </Dropzone>
+        <div>
+          <input className="search-field-container" placeholder='Search' type="text" onKeyPress={this.handleSearchKeyPress} />
+          <label className='file-select-btn'>Search</label>
+        </div>
+          <br/>
         <div className="filelist-container">
           <FilesList files={this.state.uploadedFiles}/>
         </div>
-      </div>
-      <div className="searchField-container"><input type="text" onKeyPress={this.handleSearchKeyPress} /><label>Search</label></div>
-      <br/>
-      <div className="filelist-container">
-        <FilesList files={this.state.uploadedFiles}/>
-      </div>
       </div>
     )
   }

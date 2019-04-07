@@ -24,7 +24,7 @@ const AdminBar = (props) => {
     }
 
     const OTR = {
-      marginLeft: ".4em",
+      marginLeft: ".5em",
       fontWeight: "bold",
       fontFamily: "PlayfairDisplay",
       fontSize: "1rem",

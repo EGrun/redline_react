@@ -31,7 +31,7 @@ class SideBar extends Component {
   render() { 
     return (
       <div className="sidebar-container">
-        <span style={{margin: '1em 0 2.5em 0'}}>
+        <span className='wrapper'>
           <span className="departments-header">Departments</span>
             <div className="departments">
               <ul className="teams">
@@ -39,7 +39,7 @@ class SideBar extends Component {
               </ul>
             </div>
         </span>
-        <span style={{width: '100%', margin: '1em 0 2.5em 0'}}>
+        <span className='wrapper2'>
           <span className="departments-header">Settings</span>
             <ul className="teams">
               <li className="team">
@@ -52,16 +52,6 @@ class SideBar extends Component {
               </li>
             </ul>
         </span>
-//         <span className="logout">Logout</span>
-
-//         <div className="departments">
-//           <ul className="teams">
-//             {this.renderTeams()}
-//           </ul>
-//         </div>
-//         <div className="settings">
-        
-//         </div>
         <button className="logout" onClick={this.handleLogoutButtonClick}>Logout</button>
       </div>
     );
