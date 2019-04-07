@@ -230,6 +230,10 @@ export default class DropZone extends Component {
             </section>
           )}
         </Dropzone>
+        <div  class="ldBar"
+              style={{width:"100%", height: "60px"}}
+              data-stroke="data:ldbar/res,gradient(0,1,#9df,#9fd,#df9,#fd9)"
+              data-path="M10 20Q20 15 30 20Q40 25 50 20Q60 15 70 20Q80 25 90 20">       </div>
         <div>
           <input id="search" className="search-field-container" placeholder='Search' type="text" onKeyPress={this.handleSearchKeyPress} />
           <label className='file-select-btn' onClick={this.handleSearchButtonClick}>Search</label>
