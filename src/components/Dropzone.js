@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import "./dropzone.css";
 import Dropzone from 'react-dropzone';
 const converter = require('json-2-csv');
 
@@ -38,7 +39,7 @@ export default class DropZone extends Component {
         console.log(csv);
       };
   
-      let result = await converter.json2csv( documents , json2csvCallback)
+      let result = await converter.json2csv( documents , json2csvCallback, {expandArrayObjects: true})
       return result
     }
   }
@@ -60,9 +61,12 @@ export default class DropZone extends Component {
         <Dropzone onDrop={this.onDrop}>
           {({getRootProps, getInputProps}) => (
             <section className="container">
+              <h4 className="upload-header">Upload Chat Log</h4>
               <div {...getRootProps({className: 'dropzone'})}>
                 <input {...getInputProps()} />
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p className='drop-here-txt'>Drop files here</p>
+                <p className='or-txt'>or</p>
+                <p className='file-select-btn'>Select Files</p>
               </div>
               <aside>
                 <h4>Files</h4>

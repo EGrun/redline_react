@@ -1,0 +1,37 @@
+.dropzone {
+  border: darkgray dashed 0.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1em;
+}
+
+p {
+  margin: 0;
+}
+
+.upload-header {
+  align-self: flex-start;
+}
+
+.drop-here-txt {
+  font-size: 1em;
+  margin: .5em;
+}
+
+.or-txt {
+  font-size: .6em;
+  margin: .5em;
+
+}
+
+.file-select-btn {
+  align-self: center;
+  width: fit-content;
+  font-size: .8;
+  border-radius: 3px;
+  padding: .3em .7em;
+  margin: .5em;
+  box-shadow: 0 1px 0 0 rgba(204, 204, 204, 0.5);
+  background-color: #ffa943;
+}
