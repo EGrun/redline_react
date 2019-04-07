@@ -1,5 +1,5 @@
 .sidebar-container {
-  height: 95vh;
+  height: 94vh;
   margin-top: .1em;
   min-width: 20vw;
   max-width: 150px;
@@ -79,12 +79,19 @@
 
 @media only screen and (max-width: 500px) {
   .sidebar-container {
+    height: 15vh;
+    position: fixed;
+    margin: 0;
+    left: 0;
+    bottom: 0;
     flex-wrap: wrap;
-    margin: 0px;
-    justify-content: center;
+    margin: 0 auto;
+    justify-content: space-around;
+    margin-bottom: 0;
     min-width: 100vw;
     max-height: fit-content;
     flex-direction: row;
+    overflow: auto;
   }
 
   .departments {
@@ -96,11 +103,44 @@
     max-height: 50%;
   }
 
-  .wrapper
-  
+  .wrapper {
+    align-items: center;
+    padding: none;
+    margin-bottom: 0;
+    height: 15vh;
+    width: 50vw;
+    flex-flow: wrap;
+  }
+
   .wrapper2 {
-    max-height: 20vh;
-    flex-flow: flex wrap;
-    flex-direction: row;
+    align-items: center;
+    width: 30vw;
+  }
+
+  .teams {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+
+  .settings {
+    justify-self: left;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .team {
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0;
+    width: 45%;
+    flex-flow: nowrap;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .team {
+    font-size: 8px;
   }
 }

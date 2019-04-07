@@ -5,7 +5,7 @@ import avatarSm from '../assets/avatar_2019-04-07/avatar.jpg'
 const AdminBar = (props) => {
     const adminBar = {
         width: '100vw',
-        height: '4.35vh',
+        height: '6vh',
         backgroundColor: '#2c0f56',
         display: 'flex',
         alignItems: 'center',

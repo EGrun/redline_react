@@ -41,7 +41,7 @@ class SideBar extends Component {
         </span>
         <span className='wrapper2'>
           <span className="departments-header">Settings</span>
-            <ul className="teams">
+            <ul className="teams settings">
               <li className="team">
                 <img src={toolsImg} alt="tools" className="avatar"/>
                 <span className="team-name">Tools</span>
