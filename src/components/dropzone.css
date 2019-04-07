@@ -1,5 +1,8 @@
 .dropzone-container {
   margin: 1em;
+  height: fit-content;
+  max-width: 80vw;
+  min-width: 60vw;
   border-radius: 3px;
   box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.3);
   background-color: #fcfcfc;
@@ -43,7 +46,7 @@ p {
 .file-select-btn {
   align-self: center;
   width: fit-content;
-  font-size: .8;
+  font-size: .75em;
   border-radius: 3px;
   padding: .3em .7em;
   margin: .5em;
