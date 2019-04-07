@@ -7,26 +7,33 @@ export const userService = {
     getAll
 };
 
-function login(username, password) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-    };
+function login(username, password, tenantId) {
+    // const requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ username, password })
+    // };
 
-    return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // login successful if there's a user in the response
-            if (user) {
-                // store user details and basic auth credentials in local storage 
-                // to keep user logged in between page refreshes
-                user.authdata = window.btoa(username + ':' + password);
-                localStorage.setItem('user', JSON.stringify(user));
-            }
+    var user = {};
+    user.authdata = window.btoa(username + ':' + password);
+    user.tenantId = tenantId;
+    localStorage.setItem('user', JSON.stringify(user));
 
-            return user;
-        });
+    return Promise.resolve(user);
+
+    // return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
+    //     .then(handleResponse)
+    //     .then(user => {
+    //         // login successful if there's a user in the response
+    //         if (user) {
+    //             // store user details and basic auth credentials in local storage 
+    //             // to keep user logged in between page refreshes
+    //             user.authdata = window.btoa(username + ':' + password);
+    //             localStorage.setItem('user', JSON.stringify(user));
+    //         }
+
+    //         return user;
+    //     });
 }
 
 function logout() {
