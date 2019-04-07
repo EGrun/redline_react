@@ -235,6 +235,9 @@ export default class DropZone extends Component {
             </section>
           )}
         </Dropzone>
+        <div className="filelist-container">
+          <FilesList files={this.state.uploadedFiles}/>
+        </div>
       </div>
       <div className="searchField-container"><input type="text" onKeyPress={this.handleSearchKeyPress} /><label>Search</label></div>
       <br/>
@@ -242,6 +245,6 @@ export default class DropZone extends Component {
         <FilesList files={this.state.uploadedFiles}/>
       </div>
       </div>
-    );
+    )
   }
 }

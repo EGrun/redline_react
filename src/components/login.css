@@ -1,0 +1,38 @@
+.login-container {
+  background-color: #2c0f56;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  width: fit-content;
+}
+
+.otr {
+  font-family: PlayfairDisplay;
+  font-size: 8rem;
+  align-self: center;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.moto {
+  margin: 1em 0;
+  font-family: Avenir;
+  font-size: 1.5em;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.btn {
+  margin: 1em 0;
+  width: 100%;
+  background-color: #ffa943;
+  font-family: Avenir;
+  font-size: 18px;
+  font-weight: 900;
+  color: #000000;
+}

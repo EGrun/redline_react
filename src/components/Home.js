@@ -8,14 +8,21 @@ const Home = () => {
   const homeContainer = {
     display: 'flex',
     flexFlow: 'wrap',
+    height: '100vh',
   }
 
+  const content = {
+    display: 'flex',
+    justifyContent: 'flex-start',
+  }
 
   return (
     <div style={homeContainer}>
-      <SideBar />
       <AdminBar />
-      <DropZone />
+      <div style={content}>
+        <SideBar />
+        <DropZone />
+      </div>
     </div>
   );
 }

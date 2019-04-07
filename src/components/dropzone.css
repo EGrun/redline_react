@@ -1,15 +1,24 @@
 .dropzone-container {
   margin: 1em;
-  height: fit-content;
+  height: 92vh;
   max-width: 80vw;
-  min-width: 60vw;
+  min-width: 30vw;
   border-radius: 3px;
   box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.3);
   background-color: #fcfcfc;
+  overflow: hidden,
+}
+.fileslist-container{
+  overflow: hidden;
 }
 
 .container {
   margin: 1em;
+  width: inherit;
+}
+
+.settings {
+  padding-top: 10vh;
 }
 
 .dropzone {
