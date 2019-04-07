@@ -80,8 +80,8 @@
 @media only screen and (max-width: 500px) {
   .sidebar-container {
     flex-wrap: wrap;
-    margin: 0px;
-    justify-content: center;
+    margin: 0 auto;
+    justify-content: space-around;
     min-width: 100vw;
     max-height: fit-content;
     flex-direction: row;
@@ -96,11 +96,38 @@
     max-height: 50%;
   }
 
-  .wrapper
-  
-  .wrapper2 {
+  .wrapper {
+    align-items: center;
+    padding: none;
+    margin-bottom: 0;
     max-height: 20vh;
-    flex-flow: flex wrap;
-    flex-direction: row;
+    width: 50vw;
+    flex-flow: wrap;
+  }
+
+  .wrapper2 {
+    align-items: center;
+    width: 30vw;
+  }
+
+  .teams {
+    max-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+
+  .settings {
+    justify-self: left;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .team {
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0;
+    width: 45%;
+    flex-flow: nowrap;
   }
 }
