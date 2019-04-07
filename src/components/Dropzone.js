@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Dropzone from 'react-dropzone';
 const converter = require('json-2-csv');
-const states = require('./states.json')
 
 export default class DropZone extends Component {
   constructor() {
@@ -17,15 +16,33 @@ export default class DropZone extends Component {
     await this.analysisHandler(convertedFiles)
   };
 
+  readFiles = async (files) => {
+    let reader = new FileReader()
+
+    reader.readAsText(files)
+
+    reader.onload = function(e) {
+      return reader.result;
+    }
+  }
+
   convertFiles = async (files) => { 
-    const json = require(files[0].path)
+    console.log("im the file you're looking for:")
+    console.log(files[0])
+    let file = files[0]
+
     const json2csvCallback = function (err, csv) {
       if (err) throw err;
+      console.log('callback')
       console.log(csv);
     };
 
-    let result = await converter.json2csv(json, json2csvCallback, {expandArrayObjects: true})
-    console.log(result)
+    let json = this.readFiles(file)
+    console.log(json)
+
+    let result = this.readFiles(file).then(
+      converter.json2csv(json , json2csvCallback, {expandArrayObjects: true})
+    )
     return result
   }
 
