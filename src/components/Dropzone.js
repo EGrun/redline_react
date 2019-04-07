@@ -69,12 +69,14 @@ export default class DropZone extends Component {
     if (searchTerm && searchTerm.length > 0) {
       searchTerm = this.escapeString(searchTerm);
       query = "SELECT * FROM dcterms:qualifiedResource WHERE dc:title LIKE '" + searchTerm + "%'" + 
+      " OR dc:creator LIKE '" + searchTerm + "%'" +
       " OR dc:description LIKE '" + searchTerm + "%'" +
       " OR dc:publisher LIKE '" + searchTerm + "%'" +
-      " OR dc:contributor LIKE '" + searchTerm + "%'";
+      " OR dc:contributor LIKE '" + searchTerm + "%'" +
+      " ORDER BY enaio:creationDate DESC"
     }
     else{
-      query = 'SELECT * FROM dcterms:qualifiedResource';
+      query = 'SELECT * FROM dcterms:qualifiedResource ORDER BY enaio:creationDate DESC';
     }
     const requestOptions = {
       method: 'POST',
@@ -116,6 +118,10 @@ export default class DropZone extends Component {
     if (e.key === 'Enter') {
       this.getFileList(e.target.value);
     }
+  }
+
+  handleSearchButtonClick = (e) => {
+    this.getFileList(document.getElementById("search").value);
   }
 
   readFiles = async (files) => {
@@ -225,8 +231,8 @@ export default class DropZone extends Component {
           )}
         </Dropzone>
         <div>
-          <input className="search-field-container" placeholder='Search' type="text" onKeyPress={this.handleSearchKeyPress} />
-          <label className='file-select-btn'>Search</label>
+          <input id="search" className="search-field-container" placeholder='Search' type="text" onKeyPress={this.handleSearchKeyPress} />
+          <label className='file-select-btn' onClick={this.handleSearchButtonClick}>Search</label>
         </div>
           <br/>
         <div className="filelist-container">
