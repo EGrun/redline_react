@@ -43,7 +43,7 @@ p {
 .file-select-btn {
   align-self: center;
   width: fit-content;
-  font-size: .8;
+  font-size: .75em;
   border-radius: 3px;
   padding: .3em .7em;
   margin: .5em;
