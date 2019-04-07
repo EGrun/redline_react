@@ -34,6 +34,14 @@ p {
   margin: 0;
 }
 
+th {
+  text-align: center;
+}
+
+td {
+  color: #0475b0;
+}
+
 .upload-header {
   margin: 1em 0 .5em 0;
   padding-top: 1em;

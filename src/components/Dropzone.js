@@ -68,10 +68,10 @@ export default class DropZone extends Component {
     
     if (searchTerm && searchTerm.length > 0) {
       searchTerm = this.escapeString(searchTerm);
-      query = "SELECT * FROM dcterms:qualifiedResource WHERE dc:title='" + searchTerm + "'" + 
-      " OR dc:description='" + searchTerm + "'" +
-      " OR dc:publisher='" + searchTerm + "'" +
-      " OR dc:contributor='" + searchTerm + "'";
+      query = "SELECT * FROM dcterms:qualifiedResource WHERE dc:title LIKE '" + searchTerm + "%'" + 
+      " OR dc:description LIKE '" + searchTerm + "%'" +
+      " OR dc:publisher LIKE '" + searchTerm + "%'" +
+      " OR dc:contributor LIKE '" + searchTerm + "%'";
     }
     else{
       query = 'SELECT * FROM dcterms:qualifiedResource';
@@ -99,7 +99,7 @@ export default class DropZone extends Component {
         var files = data.objects ? data.objects.map(f => {
           return {
             "FileId":f.properties["enaio:objectId"].value,
-            "EmployeeName": "Richard Heins",
+            "EmployeeName": f.properties["dc:creator"] ? f.properties["dc:creator"].value : "Richard Heins",
             "Topic": f.properties["dc:title"] ? f.properties["dc:title"].value : "",
             "Keyword1": f.properties["dc:description"] ? f.properties["dc:description"].value : "",
             "Keyword2": f.properties["dc:publisher"] ? f.properties["dc:publisher"].value : "",
@@ -148,17 +148,20 @@ export default class DropZone extends Component {
         "enaio:objectTypeId": {
         "value": "dcterms:qualifiedResource"
         },
+        "dc:creator": {
+          "value": "Anne Hathaway"
+        },
         "dc:title": {
-          "value": "--Topic--"
+          "value": "redline-hackathon"
         },
         "dc:description": {
-          "value": "--placeholder1--"
+          "value": "dataset"
         },
         "dc:publisher": {
-          "value": "--placeholder2--"
+          "value": "python"
         },
         "dc:contributor": {
-          "value": "--placeholder3--"
+          "value": "dcterms"
         }
         },
         "contentStreams": [{
@@ -236,7 +239,8 @@ export default class DropZone extends Component {
           <FilesList files={this.state.uploadedFiles}/>
         </div>
       </div>
-      <div className="searchField-container"><input type="text" onKeyPress={this.handleSearchKeyPress} /></div>
+      <div className="searchField-container"><input type="text" onKeyPress={this.handleSearchKeyPress} /><label>Search</label></div>
+      <br/>
       <div className="filelist-container">
         <FilesList files={this.state.uploadedFiles}/>
       </div>

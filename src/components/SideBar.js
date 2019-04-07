@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { userService } from '../services/user.service';
 import './sidebar.css'
 const avatar = require('../assets/icon.svg')
 const toolsImg = require('../assets/tools.svg')
@@ -20,6 +21,11 @@ class SideBar extends Component {
       )
     })
     return teams
+  }
+
+  handleLogoutButtonClick = () => {
+    userService.logout();
+    this.props.history.push('/login');
   }
 
   render() { 
@@ -46,7 +52,17 @@ class SideBar extends Component {
               </li>
             </ul>
         </span>
-        <span className="logout">Logout</span>
+//         <span className="logout">Logout</span>
+
+//         <div className="departments">
+//           <ul className="teams">
+//             {this.renderTeams()}
+//           </ul>
+//         </div>
+//         <div className="settings">
+        
+//         </div>
+        <button className="logout" onClick={this.handleLogoutButtonClick}>Logout</button>
       </div>
     );
   }
