@@ -224,7 +224,6 @@ export default class DropZone extends Component {
     ));
 
     return (
-      <div>
       <div className="dropzone-container">
         <Dropzone onDrop={this.onDrop}>
           {({getRootProps, getInputProps}) => (
@@ -243,11 +242,11 @@ export default class DropZone extends Component {
             </section>
           )}
         </Dropzone>
+        <div className="filelist-container">
+          <FilesList files={this.state.uploadedFiles}/>
+        </div>
       </div>
-      <div className="filelist-container">
-        <FilesList files={this.state.uploadedFiles}/>
-      </div>
-      </div>
+
     );
   }
 }

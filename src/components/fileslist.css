@@ -1,0 +1,6 @@
+.files-container {
+  display: flex;
+  flex-flow: wrap;
+  height: 60vh;
+  overflow:auto;
+}
