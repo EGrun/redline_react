@@ -1,8 +1,10 @@
 {
   "name": "redline-react",
   "version": "0.1.0",
+  "proxy": "http://localhost:8000/",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "json-2-csv": "^3.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

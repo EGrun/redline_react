@@ -1,5 +1,17 @@
+.dropzone-container {
+  margin: 1em;
+  border-radius: 3px;
+  box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.3);
+  background-color: #fcfcfc;
+}
+
+.container {
+  margin: 1em;
+}
+
 .dropzone {
-  border: darkgray dashed 0.2em;
+  border: #abb0b6 dashed 0.2em;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -11,7 +23,10 @@ p {
 }
 
 .upload-header {
+  margin: 1em 0 .5em 0;
+  padding-top: 1em;
   align-self: flex-start;
+  text-align: left;
 }
 
 .drop-here-txt {
